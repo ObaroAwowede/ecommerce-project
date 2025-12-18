@@ -1,9 +1,12 @@
 import "./Orders.css";
+import buyagain from '../assets/images/icons/buy-again.png'
 import { Header } from "../components/Header";
+import { Link } from "react-router";
 
 export function Orders() {
   return (
     <>
+    <link rel="icon" href="orders-favicon.png" />
       <title>Orders</title>
         <Header />
 
@@ -46,18 +49,18 @@ export function Orders() {
                 <button className="buy-again-button button-primary">
                   <img
                     className="buy-again-icon"
-                    src="images/icons/buy-again.png"
+                    src={buyagain}
                   />
                   <span className="buy-again-message">Add to Cart</span>
                 </button>
               </div>
 
               <div className="product-actions">
-                <a href="tracking.html">
+                <Link to="/tracking">
                   <button className="track-package-button button-secondary">
                     Track package
                   </button>
-                </a>
+                </Link>
               </div>
 
               <div className="product-image-container">
@@ -75,18 +78,18 @@ export function Orders() {
                 <button className="buy-again-button button-primary">
                   <img
                     className="buy-again-icon"
-                    src="images/icons/buy-again.png"
+                    src={buyagain}
                   />
                   <span className="buy-again-message">Add to Cart</span>
                 </button>
               </div>
 
               <div className="product-actions">
-                <a href="tracking.html">
+                <Link to="/tracking">
                   <button className="track-package-button button-secondary">
                     Track package
                   </button>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -124,18 +127,18 @@ export function Orders() {
                 <button className="buy-again-button button-primary">
                   <img
                     className="buy-again-icon"
-                    src="images/icons/buy-again.png"
+                    src={buyagain}
                   />
                   <span className="buy-again-message">Add to Cart</span>
                 </button>
               </div>
 
               <div className="product-actions">
-                <a href="tracking.html">
+                <Link to="/tracking">
                   <button className="track-package-button button-secondary">
                     Track package
                   </button>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

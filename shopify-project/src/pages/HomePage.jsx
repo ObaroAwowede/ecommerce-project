@@ -3,6 +3,7 @@ import axios from 'axios';
 import checkmark from "../assets/images/icons/checkmark.png";
 import { Header } from "../components/Header";
 import { products } from "../../../starting-code/data/products.js";
+import { useEffect } from "react";
 
 export function HomePage() {
   // note fetch() and json() are asynchronous meaning we can't save them to variable and we have to
@@ -22,13 +23,16 @@ export function HomePage() {
   //     console.log(data);
   //   })
 
-
   // but the cleanest method is fetching with axios, which allows you to directly
   //  access the data from the response
-  axios.get('http://localhost:3000/api/products/')
+  // i put it in a useeffect with a empty dependency array, so it runs just once
+  useEffect(() => {
+      axios.get('http://localhost:3000/api/products/')
     .then((response) => {
       console.log(response.data)
     })
+  }, [])
+
   return (
     <>
       <link rel="icon" href="home-favicon.png" />

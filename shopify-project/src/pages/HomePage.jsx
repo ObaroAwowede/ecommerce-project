@@ -1,9 +1,34 @@
 import "./HomePage.css";
+import axios from 'axios';
 import checkmark from "../assets/images/icons/checkmark.png";
 import { Header } from "../components/Header";
 import { products } from "../../../starting-code/data/products.js";
 
 export function HomePage() {
+  // note fetch() and json() are asynchronous meaning we can't save them to variable and we have to
+  // use .then to access them
+  // fetch('http://localhost:3000/api/products/')
+  //   .then((response) => {
+  //     response.json().then((data) => {
+  //       console.log(data)
+  //     })
+  //   })
+  //a cleaner way of righting this is below
+
+  // fetch('http://localhost:3000/api/products/')
+  //   .then((response) => {
+  //     return response.json();
+  //   }).then((data) => {
+  //     console.log(data);
+  //   })
+
+
+  // but the cleanest method is fetching with axios, which allows you to directly
+  //  access the data from the response
+  axios.get('http://localhost:3000/api/products/')
+    .then((response) => {
+      console.log(response.data)
+    })
   return (
     <>
       <link rel="icon" href="home-favicon.png" />

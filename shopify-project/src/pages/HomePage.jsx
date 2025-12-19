@@ -2,10 +2,11 @@ import "./HomePage.css";
 import axios from 'axios';
 import checkmark from "../assets/images/icons/checkmark.png";
 import { Header } from "../components/Header";
-import { products } from "../../../starting-code/data/products.js";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export function HomePage() {
+  const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
   // note fetch() and json() are asynchronous meaning we can't save them to variable and we have to
   // use .then to access them
   // fetch('http://localhost:3000/api/products/')
@@ -26,17 +27,23 @@ export function HomePage() {
   // but the cleanest method is fetching with axios, which allows you to directly
   //  access the data from the response
   // i put it in a useeffect with a empty dependency array, so it runs just once
+  
   useEffect(() => {
-      axios.get('http://localhost:3000/api/products/')
+    axios.get('http://localhost:3000/api/products/')
     .then((response) => {
-      console.log(response.data)
+      setProducts(response.data);
+    })
+
+    axios.get('http://localhost:3000/api/cart-items/')
+    .then((response) => {
+      setCart(response.data);
     })
   }, [])
 
   return (
     <>
       <link rel="icon" href="home-favicon.png" />
-      <Header />
+      <Header cart={cart}/>
       <div className="home-page">
         <div className="products-grid">
           {products.map((product) => {

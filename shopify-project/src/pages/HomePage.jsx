@@ -3,10 +3,11 @@ import axios from 'axios';
 import checkmark from "../assets/images/icons/checkmark.png";
 import { Header } from "../components/Header";
 import { useEffect, useState } from "react";
+import { calcPrice } from "../utils/money";
 
-export function HomePage() {
+export function HomePage({ cart }) {
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState([]);
+  
   // note fetch() and json() are asynchronous meaning we can't save them to variable and we have to
   // use .then to access them
   // fetch('http://localhost:3000/api/products/')
@@ -32,11 +33,6 @@ export function HomePage() {
     axios.get('/api/products/')
     .then((response) => {
       setProducts(response.data);
-    })
-
-    axios.get('/api/cart-items/')
-    .then((response) => {
-      setCart(response.data);
     })
   }, [])
 
@@ -68,7 +64,7 @@ export function HomePage() {
                   <div className="product-rating-count link-primary">{product.rating.count}</div>
                 </div>
 
-                <div className="product-price">${(product.priceCents/100).toFixed(2)}</div>
+                <div className="product-price">{calcPrice(product.priceCents)}</div>
 
                 <div className="product-quantity-container">
                   <select>

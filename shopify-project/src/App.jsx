@@ -1,6 +1,6 @@
-import { HomePage } from './pages/HomePage'
+import { HomePage } from './pages/home/HomePage'
 import { CheckOut } from './pages/CheckOut/CheckOut';
-import { Orders } from './pages/Orders';
+import { Orders } from './pages/orders/Orders';
 import { Tracking } from './pages/TrackingPage';
 import { Routes, Route } from 'react-router';
 import { NotFound } from './pages/NotFoundPage';
@@ -24,7 +24,7 @@ function App() {
         <Route path='checkout' element={<CheckOut cart={cart}/>} />
         <Route path='orders' element={<Orders cart={cart}/>} />
         <Route path='tracking' element={<Tracking cart={cart}/>} />
-        <Route path='*' element={<NotFound />} />
+        <Route path='*' element={<NotFound cart={cart}/>} />
       </Routes>
     </>
   )
